@@ -1,4 +1,3 @@
-# Todo_App_OIBSIP
 # Todo Web Application 📝
 
 A sleek, responsive, and modern **Todo Web Application** developed as a part of the **Oasis Infobytes Web Development Internship**. This project is built using modern frontend technologies to deliver a fast, lightweight, and highly interactive task management tool with full CRUD functionalities.
