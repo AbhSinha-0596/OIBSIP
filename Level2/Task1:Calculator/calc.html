@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Calculator
+    </title>
+    </head>
+    <style>
+        @media(min-width:768px){
+            
+            .display{
+                display:grid;
+                padding:0px;
+                margin:0px;
+                grid-template-rows:1fr 1fr;
+                min-width:screen;
+                min-height:screen;
+            }
+            .main{
+                width:screen;
+                height:1vh;
+            }
+            .history{
+                width:100%;
+                height:100%;
+                
+            }
+            
+
+        }
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            background: #00aff5;
+            background: linear-gradient(120deg,rgb(60, 20, 208) 0%, rgba(64, 120, 189, 1) 50%, rgb(104, 5, 190) 100%);
+        }
+        
+        .main{
+           border-radius:8px;
+            padding:6px;
+            margin:4px;
+            background-color:#2b1071;
+            height:30vh;
+            width:30vw;
+            min-width:120px;
+            max-width:240px;
+            min-height:fit-content;
+        }
+        .topPanel{
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr;
+        }
+        .inputPanel{
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr 1fr;
+            
+        }
+        .bottom{
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr 1fr;
+        }
+        .outputPanel{
+            display:flex;
+            align-items:center;
+            justify-items:center;
+            background-color:#505081;
+            color:white;
+            height:5vh;
+            min-height:20px;
+            font-size:1.4rem;
+            width:95%;
+            padding:4px;
+            border-radius:8px;
+            
+        }
+        button{
+            padding:2px;
+            margin:2px;
+            border-radius:4px;
+            height:4vh;
+            min-height:fit-content;
+        }
+        button:hover{
+            background-color:#0047ab;
+            color:white;
+        }
+        .equal:hover{
+            background-color:rgb(255, 89, 0);
+        }
+        .C:hover{
+            background-color:orange;
+        }
+        .AC:hover{
+            background-color:red;
+            color:white;
+        }
+        .scratchpad{
+            font-size:large;
+            text-align:center;
+            display:flex;
+            height:30vh;
+            width:30vw;
+            min-width:120px;
+            max-width:240px;
+            min-height:fit-content;
+            border-radius:2px;
+            align-items:center;
+        }
+        .head_hist{
+            color:aliceblue;
+            font-family:'Lucida Sans';
+        }
+        .history{
+            text-align:center;
+            border-radius:2px;
+            padding:2px;
+            margin:5px;
+            height:30vh;
+            width:30vw;
+            min-width:120px;
+            max-width:246px;
+            min-height:fit-content;
+            background-color:#272757;
+        }
+        .hist_clear{
+            font-family:'Lucida Sans';
+        }
+        .hist_clear:hover{
+            background-color:red;
+            font-family:'Lucida Sans';
+        }
+    </style>
+    <body>
+        <div class="display">
+        <div class="main">
+            <div class="outputPanel" id="outputPanel" ></div>
+            <div class="topPanel">
+                <button class="C" id="C" onClick=" deleteValue()">C</button>
+                <button class="AC" id="AC" onClick="clearValue()" >AC</button>
+                <button class="PI" id="PI" onClick="appendToDisplay('3.14')">π</button>
+                
+            </div>
+            <div class="inputPanel">
+                <button id="one" onClick="appendToDisplay('1')"> 1 </button>
+                <button id="two" onClick="appendToDisplay('2')"> 2 </button>
+                <button id="three" onClick="appendToDisplay('3')"> 3</button>
+                <button id="plus" onClick="appendToDisplay('+')">+</button>
+                
+            </div>
+            <div class="inputPanel">
+                <button id="four" onClick="appendToDisplay('4')">4</button>
+                <button id="five" onClick="appendToDisplay('5')">5</button>
+                <button id="six" onClick="appendToDisplay('6')">6</button>
+                <button id="minus" onClick="appendToDisplay('-')">-</button>
+                
+            </div>
+            <div class="bottom">
+                <button id="seven" onClick="appendToDisplay('7')">7</button>
+                <button id="eight" onClick="appendToDisplay('8')">8</button>
+                <button id="nine" onClick="appendToDisplay('9')">9</button>
+                <button id="multiply" onClick="appendToDisplay('*')">x</button>
+                <button id="decimal" onClick="appendToDisplay('.')">.</button>
+                <button id="zero" onClick="appendToDisplay('0')">0</button>
+                <button id="divide" onClick="appendToDisplay('/')">/</button>
+                <button class="equal" id="equal" onClick="calculate()">=</button>
+                
+            </div>
+        </div>
+        <div class="history">
+            <span class="head_hist">History: </span>
+            <textarea id="scratchpad" class="scratchpad" placeholder="Previous equations are displayed here"></textarea>
+            <button  class="hist_clear" onClick="historyClear()">Clear All</button>
+        </div>
+        </div>
+    </body>
+    <script>
+        const textarea=document.getElementById("scratchpad");
+        
+        let value='0';
+        let previous=[];
+        let ch='';
+        let result=0;
+        document.getElementById("outputPanel").textContent=value; 
+        function historyClear()
+        {
+            textarea.value="";
+            value='0';
+            document.getElementById("outputPanel").textContent=value;
+            count=0;
+
+        }
+        function appendToDisplay(ch)
+        {
+            if(value=='0'){
+                value=''
+            }
+            value=value+ch;
+            ch='';
+            document.getElementById("outputPanel").textContent=value; 
+            console.log(value);
+        }
+        function calculate()
+        {
+            let temp=value;
+            temp="";
+            document.getElementById("outputPanel").textContent=value;
+            try{
+                temp=value;
+                
+                result=eval(value);
+                result=result.toFixed(2);
+                textarea.value=textarea.value+temp+"";
+                value=String(result);
+                document.getElementById("outputPanel").textContent=value;
+                temp=value;
+                textarea.value=textarea.value+"="+value+"\n";
+                temp="";
+                textarea.scrollTop=textarea.scrollHeight;
+
+
+            }
+            catch(error)
+            {
+                value='ERROR';
+                temp=value;
+                textarea.value=textarea.value+temp+"\n";
+                textarea.scrollTop=textarea.scrollHeight;
+                temp="";
+                document.getElementById("outputPanel").textContent=value;
+                value='0';
+            }
+            finally{
+                       
+                result=0;
+            }
+        }
+        function clearValue()
+        {
+            value='0';
+            document.getElementById("outputPanel").textContent=value; 
+        }
+        function deleteValue()
+        {
+            value=value.slice(0,-1);
+            if(value=='')
+            {
+                value='0';
+            }
+            console.log(value);
+            document.getElementById("outputPanel").textContent=value; 
+        }
+        
+    </script>
+</html>
