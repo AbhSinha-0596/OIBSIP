@@ -1,16 +1,10 @@
-# React + Vite
+# Tribute_Page:Sir Ratan Naval Tata
+This project pays tribute to Shri Ratan Naval Tata, the Ex-chairperson of the Tata Group who pivoted the Tata Group from a local industry to a global workforce. His vision, honesty and bold decisions brought success to the Tata Group as well as played an important role in spreading the access of Indian industrial workforce across the globe.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Padma Bhushan Shri Ratan Tata is reknowned throughout the world as an industrialist who kept honest and welfare above profits. The vision and decisions made by Shri Ratan Naval Tata still guide today's leaders towards welfare, courage and self-responsibility.
 
-Currently, two official plugins are available:
+This project was built under the Web Development Internship Program organized by Oasis Infobyte. The program aims to provide hands-on experience by building real-world landing pages, portfolio sites, and web applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Company: Oasis Infobyte
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Domain: Web Development
